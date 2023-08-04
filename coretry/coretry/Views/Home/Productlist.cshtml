@@ -1,0 +1,81 @@
+﻿@model IEnumerable<coretry.Models.Product>
+
+@{
+    ViewData["Title"] = "Product-List";
+}
+
+<h1 style="text-align:center;">Product List</h1>
+
+<div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description 
+                </th>
+                <th>
+                    Availability
+                </th>
+                <th>
+                    Deliverable To
+                </th>
+                <th>
+                    Action1
+                </th>
+                <th>
+                    Action2
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+
+
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Type
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    @if (item.Isavailable == true)
+                    {
+                        <td>
+
+                            Yes
+
+
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            No
+                        </td>
+                    }
+                    <td>
+                        @item.Deliverable
+                    </td>
+                    <td><a href="@Url.Action("UpdateProduct", "Home", new { id = @item.Id })"><button type="button">Edit</button></a></td>
+                    <td><a href="@Url.Action("DeleteProduct", "Home", new { id = @item.Id })"><button type="button">Delete</button></a></td>
+
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+</div>
+

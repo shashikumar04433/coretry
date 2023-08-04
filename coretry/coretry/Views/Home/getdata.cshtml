@@ -1,0 +1,54 @@
+﻿@model IEnumerable<coretry.Models.Book>
+
+@{
+    ViewData["Title"] = "getdata";
+}
+
+<h1>getdata</h1>
+
+<div>
+    <h4>Book</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Author
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+
+                
+               
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.Author
+                </td>
+                    <td><a href="@Url.Action("Editdata", "Home", new { id = @item.Id })"><button type="button">Edit</button></a></td>
+                    <td><a href="@Url.Action("Delete", "Home", new { id = @item.Id })"><button type="button">Delete</button></a></td>
+
+                </tr>
+
+            }
+            
+        </tbody>
+    </table>
+</div>
+
